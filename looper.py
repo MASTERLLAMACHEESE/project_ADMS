@@ -1,4 +1,7 @@
+from threading import Thread
+from concurrent.futures import Future
 import pygame
+import _thread
 
 
 class Looper:
@@ -9,21 +12,20 @@ class Looper:
         self.bpm = bpm
         self.beat_counter = 0
 
-        pygame.mixer.pre_init(44100, 16, 1, 4096)
-        pygame.mixer.init()
-
-    def add_sound(self, sound):
-        self.sounds_in_beat[self.beat_counter].append(sound)
-
-    def loop(self):
+    def __call__(self, *args, **kwargs):
         while self.loop is True:
             for i in range(16):
                 for sound in self.sounds_in_beat[i]:
                     if sound is not None:
                         sound.play()
-                print(f'on loop {i}')
-                pygame.time.delay(float(60 / self.bpm * 1000))
+                pygame.time.delay(int((60 / self.bpm * 1000) / 4))
                 if i == 15:
                     self.beat_counter = 0
                 else:
                     self.beat_counter = i
+
+    def add_sound(self, index, sound):
+        if sound in self.sounds_in_beat[index]:
+            self.sounds_in_beat[index].remove(sound)
+        else:
+            self.sounds_in_beat[index].append(sound)
