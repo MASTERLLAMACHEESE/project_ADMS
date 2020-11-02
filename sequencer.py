@@ -5,11 +5,13 @@ from datetime import datetime
 class Sequencer:
 
     def __init__(self, bpm, loop=True):
+        self.bpm = bpm
         self.sounds_in_beat = [[None for x in range(4)] for y in range(16)]
         self.loop = loop
-        self.delay = int((60 / bpm * 1000))
-        print(self.delay)
+        #self.delay = int((60 / self.bpm * 1000))
+        #print(self.delay)
         self.beat_counter = 0
+        
 
     def __call__(self, *args, **kwargs):
         while self.loop is True:
@@ -17,7 +19,7 @@ class Sequencer:
                 for sound in self.sounds_in_beat[i]:
                     if sound is not None:
                         sound.play()
-                pygame.time.delay(self.delay)
+                pygame.time.delay(int((60 / self.bpm * 1000)))
                 if i == 15:
                     self.beat_counter = 0
                 else:

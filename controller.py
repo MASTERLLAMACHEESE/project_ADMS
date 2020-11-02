@@ -23,6 +23,8 @@ class Controller:
             self.seq_add(btn)
         if type == 'pad':
             self.seq_select(btn)
+        if type == 'bpm':
+            self.bpm_set(btn)
 
     def seq_select(self, btn):
         self.selected = btn
@@ -33,6 +35,24 @@ class Controller:
         if self.selected:
             self.sequencer.add_sound(btn-1, self.sounds[self.selected])
             print(f'pad {self.selected} added to {btn}')
+    
+    def bpm_set(self, btn):
+        print(f'{self.sequencer.bpm} old bpm')
+        if btn == 1:
+            if self.bpm < 190:
+                self.bpm = self.bpm + 1
+                self.sequencer.bpm = self.bpm
+                print(f'{self.sequencer.bpm} current bpm')
+        if btn == 2:
+            if self.bpm > 60:
+                self.bpm = self.bpm - 1
+                self.sequencer.bpm = self.bpm
+                print(f'{self.sequencer.bpm} current bpm')
+        if btn == 3:
+            self.bpm = 124
+            self.sequencer.bpm = 124
+            print(f'{self.sequencer.bpm} current bpm')
+        
 
     def seq_toggle_play(self):
         # Not working properly
@@ -42,6 +62,10 @@ class Controller:
         if self.play_state == 0:
             self.loop_thread = _thread.start_new_thread(self.sequencer, ())
             self.play_state = 1
+
+    
+
+
 
     def mode_toggle(self):
         pass

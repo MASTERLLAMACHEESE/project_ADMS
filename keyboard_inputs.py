@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from controller import Controller
 import _thread
 from pynput import keyboard
@@ -40,6 +43,12 @@ pad_mapping = {
     '-': 16,
 }
 
+bpm_mapping = {
+    'y': 1,
+    'h': 2,
+    'n': 3,
+}
+
 controller = Controller()
 controller.seq_toggle_play()
 
@@ -49,10 +58,13 @@ def on_press(key):
         print(key.char)
         seq_btn = sequencer_mapping.get(key.char)
         pad_btn = pad_mapping.get(key.char)
+        bpm_btn = bpm_mapping.get(key.char)
         if seq_btn:
             controller.input(seq_btn, 'seq')
         if pad_btn:
             controller.input(pad_btn, 'pad')
+        if bpm_btn:
+            controller.input(bpm_btn, 'bpm')
     except AttributeError:
         pass
 
