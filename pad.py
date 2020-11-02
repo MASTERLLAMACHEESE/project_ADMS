@@ -1,1 +1,6 @@
-# For some mode or sth
+#!/usr/bin/env python
+
+class Pitch:
+
+    def __init__(self, btn):
+        self.btn = btn

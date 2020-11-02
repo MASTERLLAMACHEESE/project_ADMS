@@ -49,6 +49,12 @@ bpm_mapping = {
     'n': 3,
 }
 
+pitch_mapping = {
+    't': 1,
+    'g': 2,
+    'b': 3,
+}
+
 controller = Controller()
 controller.seq_toggle_play()
 
