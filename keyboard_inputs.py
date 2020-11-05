@@ -57,7 +57,6 @@ pitch_mapping = {
 
 controller = Controller()
 pitch = Pitch()
-controller.seq_toggle_play()
 
 
 def on_press(key):
@@ -68,13 +67,13 @@ def on_press(key):
         bpm_btn = bpm_mapping.get(key.char)
         pitch_btn = pitch_mapping.get(key.char)
         if seq_btn:
-            controller.input(seq_btn, 'seq')
+            controller.input('seq', seq_btn)
         if pad_btn:
-            controller.input(pad_btn, 'pad')
+            controller.input('pad', pad_btn)
         if bpm_btn:
-            controller.input(bpm_btn, 'bpm')
+            controller.input('bpm', bpm_btn)
         if pitch_btn:
-            pitch.input(pitch_btn,'pitch')
+            pitch.input('pitch', pitch_btn)
     except AttributeError:
         pass
 
