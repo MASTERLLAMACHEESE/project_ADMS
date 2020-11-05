@@ -27,7 +27,7 @@ class Sequencer:
         self.seq_thread.start()
 
     def stop(self):
-        settings.stop_thread = True
+        settings.stop_sequencer = True
 
     def add_sound(self, index, sound):
         if sound in settings.sounds_in_beat[index]:

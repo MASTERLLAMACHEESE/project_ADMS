@@ -1,4 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from controller import Controller
+from pitch import Pitch
+import _thread
 from pynput import keyboard
 
 sequencer_mapping = {
@@ -39,7 +44,19 @@ pad_mapping = {
     '-': 16,
 }
 
+bpm_mapping = {
+    'y': 1,
+    'h': 2,
+    'n': 3,
+}
+#simple solution is to check press resample sound in 16 ways and map to 4x4 buttons
+#when repressed reset and take original 16 sounds back to board
+pitch_mapping = {
+    't': 1,
+}
+
 controller = Controller()
+pitch = Pitch()
 
 
 def on_press(key):
@@ -47,10 +64,16 @@ def on_press(key):
         print(key.char)
         seq_btn = sequencer_mapping.get(key.char)
         pad_btn = pad_mapping.get(key.char)
+        bpm_btn = bpm_mapping.get(key.char)
+        pitch_btn = pitch_mapping.get(key.char)
         if seq_btn:
             controller.input('seq', seq_btn)
         if pad_btn:
             controller.input('pad', pad_btn)
+        if bpm_btn:
+            controller.input('bpm', bpm_btn)
+        if pitch_btn:
+            pitch.input('pitch', pitch_btn)
     except AttributeError:
         pass
 
