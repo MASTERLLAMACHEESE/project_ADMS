@@ -2,7 +2,6 @@ import settings
 import pygame
 from sequencer import Sequencer
 from sound import Sound
-from pitch import Pitch
 
 
 class Controller:
@@ -16,7 +15,6 @@ class Controller:
         self.selected = None
         self.play_state = 0
         self.sequencer = Sequencer(start=True)
-        self.pitch = Pitch()
         self.loop_thread = None
 
     def input(self, btn_type, btn=None):
@@ -24,13 +22,12 @@ class Controller:
             self.seq_add(btn)
         if btn_type == 'pad':
             self.seq_select(btn)
-        # if btn_type == 'pad':
-        #     self.seq_toggle_play()
+        if btn_type == 'bpm':
+            self.bpm_set(btn)
 
     def seq_select(self, btn):
         self.selected = btn
         settings.sounds[self.selected].play()
-        self.pitch.resample(settings[self.selected])
         print(f'{self.selected} selected')
 
     def seq_add(self, btn):
@@ -39,24 +36,18 @@ class Controller:
             print(f'pad {self.selected} added to {btn}')
     
     def bpm_set(self, btn):
-        print(f'{self.sequencer.bpm} old bpm')
         if btn == 1:
-            if self.bpm < 190:
-                self.bpm = self.bpm + 1
-                self.sequencer.bpm = self.bpm
-                print(f'{self.sequencer.bpm} current bpm')
+            if settings.bpm < 190:
+                settings.bpm = settings.bpm + 1
+                print(f'{settings.bpm} current bpm')
         if btn == 2:
-            if self.bpm > 60:
-                self.bpm = self.bpm - 1
-                self.sequencer.bpm = self.bpm
-                print(f'{self.sequencer.bpm} current bpm')
+            if settings.bpm > 60:
+                settings.bpm = settings.bpm - 1
+                print(f'{settings.bpm} current bpm')
         if btn == 3:
-            self.bpm = 124
-            self.sequencer.bpm = 124
-            print(f'{self.sequencer.bpm} current bpm')
-
-    def set_pitch(self, btn):
-        self.pitch.btn = btn
+            settings.bpm = 124
+            print(f'{settings.bpm} current bpm')
+        settings.delay = int((60 / settings.bpm * 1000))
 
     # def seq_toggle_play(self):
         # Not working properly

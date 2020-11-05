@@ -85,7 +85,7 @@ def read_line(line, key, btn_type):
             controller.input('seq', key[3])
     if btn_type == 'play':
         if GPIO.input(P_IN) == 1:
-            controller.input('play')
+            controller.input('play', 1)
     GPIO.output(line, GPIO.LOW)
 
 

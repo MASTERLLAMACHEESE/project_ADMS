@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from controller import Controller
-from pitch import Pitch
 import _thread
 from pynput import keyboard
 
@@ -56,7 +55,6 @@ pitch_mapping = {
 }
 
 controller = Controller()
-pitch = Pitch()
 
 
 def on_press(key):
@@ -65,15 +63,12 @@ def on_press(key):
         seq_btn = sequencer_mapping.get(key.char)
         pad_btn = pad_mapping.get(key.char)
         bpm_btn = bpm_mapping.get(key.char)
-        pitch_btn = pitch_mapping.get(key.char)
         if seq_btn:
             controller.input('seq', seq_btn)
         if pad_btn:
             controller.input('pad', pad_btn)
         if bpm_btn:
             controller.input('bpm', bpm_btn)
-        if pitch_btn:
-            pitch.input('pitch', pitch_btn)
     except AttributeError:
         pass
 
