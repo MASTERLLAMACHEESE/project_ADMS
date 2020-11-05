@@ -1,5 +1,4 @@
 from controller import Controller
-import _thread
 from pynput import keyboard
 
 sequencer_mapping = {
@@ -41,7 +40,6 @@ pad_mapping = {
 }
 
 controller = Controller()
-controller.seq_toggle_play()
 
 
 def on_press(key):
@@ -50,9 +48,9 @@ def on_press(key):
         seq_btn = sequencer_mapping.get(key.char)
         pad_btn = pad_mapping.get(key.char)
         if seq_btn:
-            controller.input(seq_btn, 'seq')
+            controller.input('seq', seq_btn)
         if pad_btn:
-            controller.input(pad_btn, 'pad')
+            controller.input('pad', pad_btn)
     except AttributeError:
         pass
 

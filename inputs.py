@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 import _thread
 from controller import Controller
-
+# https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.raspberrypi.org%2Fdocumentation%2Fusage%2Fgpio%2F&psig=AOvVaw0ngttCGDmViun_dXn9x-9a&ust=1604311768285000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJidkZyN4ewCFQAAAAAdAAAAABAO
 # 4x4 pad io
 PAD_L1 = 19
 PAD_L2 = 13
@@ -67,25 +67,25 @@ def read_line(line, key, btn_type):
     GPIO.output(line, GPIO.HIGH)
     if btn_type == 'pad':
         if GPIO.input(PAD_C1) == 1:
-            controller.select(key[0])
+            controller.input('pad', key[0])
         if GPIO.input(PAD_C2) == 1:
-            controller.select(key[1])
+            controller.input('pad', key[1])
         if GPIO.input(PAD_C3) == 1:
-            controller.select(key[2])
+            controller.input('pad', key[2])
         if GPIO.input(PAD_C4) == 1:
-            controller.select(key[3])
+            controller.input('pad', key[3])
     if btn_type == 'seq':
         if GPIO.input(SEQ_C1) == 1:
-            controller.add(key[0])
+            controller.input('seq', key[0])
         if GPIO.input(SEQ_C2) == 1:
-            controller.add(key[1])
+            controller.input('seq', key[1])
         if GPIO.input(SEQ_C3) == 1:
-            controller.add(key[2])
+            controller.input('seq', key[2])
         if GPIO.input(SEQ_C4) == 1:
-            controller.add(key[3])
+            controller.input('seq', key[3])
     if btn_type == 'play':
         if GPIO.input(P_IN) == 1:
-            controller.toggle_play()
+            controller.input('play')
     GPIO.output(line, GPIO.LOW)
 
 
