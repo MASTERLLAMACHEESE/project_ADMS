@@ -1,7 +1,7 @@
 import pygame
 import _thread
 from sequencer import Sequencer
-from pad import Pitch
+from pitch import Pitch
 
 SOUND_LOCATION = './sounds'
 
@@ -17,7 +17,7 @@ class Controller:
         self.selected = None
         self.play_state = 0
         self.sequencer = Sequencer(self.bpm)
-        self.pitch = Pitch
+        self.pitch = Pitch()
         self.loop_thread = None
 
     def input(self, btn, type):
@@ -33,6 +33,7 @@ class Controller:
     def seq_select(self, btn):
         self.selected = btn
         self.sounds[self.selected].play()
+        self.pitch.resample(self.sounds[self.selected])
         print(f'{self.selected} selected')
 
     def seq_add(self, btn):
