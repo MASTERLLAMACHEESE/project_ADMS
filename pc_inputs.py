@@ -4,6 +4,7 @@ import traceback
 
 from pynput import keyboard
 import adms
+import module
 
 key_mappings = {
     # Sequencer keys
@@ -58,6 +59,8 @@ def on_press(key):
             adms.pressed_key(mapped_key)
     except AttributeError:
         traceback.print_exc()
+    except KeyboardInterrupt:
+        print(f"\n{module.current_time()} Application stopped")
 
 
 def start_listener():
