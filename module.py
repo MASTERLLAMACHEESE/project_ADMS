@@ -5,8 +5,7 @@ is_usb = False
 bpm = 124
 sounds = []
 usb_sounds = []
-silence = AudioSegment.silent(duration=1)
-sounds_in_beat = [[silence for x in range(4)] for y in range(16)]
+sounds_in_beat = [[] for y in range(16)]
 seq_loop = False
 pad_selected = None
 selected = None

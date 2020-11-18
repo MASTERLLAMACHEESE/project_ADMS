@@ -8,9 +8,14 @@ def sequencer_loop():
     while module.seq_loop is True:
         for i in range(16):
             prev = time.time()
-            sounds = module.sounds_in_beat[i]
-            mixer = sounds[0].overlay(sounds[1]).overlay(sounds[2]).overlay(sounds[3])
-            play(mixer)
+            mixer = None
+            for sound in module.sounds_in_beat[i]:
+                if not mixer:
+                    mixer = sound
+                else:
+                    mixer = mixer.overlay(sound)
+            if mixer:
+                play(mixer)
             now = time.time()
             time.sleep(module.delay-(now-prev))
 
@@ -50,11 +55,7 @@ class Sequencer:
         if sound in module.sounds_in_beat[index]:
             module.sounds_in_beat[index].remove(sound)
         else:
-            for n, i in enumerate(module.sounds_in_beat[index]):
-                if i == module.silence:
-                    module.sounds_in_beat[index][n] = sound
-                    break;
-
+            module.sounds_in_beat[index].append(sound)
 
     def change_bpm(self, value):
         if value == 124:

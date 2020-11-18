@@ -16,7 +16,12 @@ class Pad:
 
     def load_sounds(self):
         for i in range(16):
-            sound = Sound(f"{module.sound_path}/{str(i+1)}.wav")
+            try:
+                sound = Sound(f"/media/usb/{str(i+1)}.wav")
+                module.sound_path = '/media/usb'
+            except FileNotFoundError:
+                sound = Sound(f"./sounds/{str(i + 1)}.wav")
+                module.sound_path = './sounds'
             sound.pad_pos = i
             module.sounds.append(sound.sound)
         module.usb_sounds = module.sounds
