@@ -1,15 +1,18 @@
 import time
 import module
 import threading
+from pydub.playback import play
 
 
 def sequencer_loop():
     while module.seq_loop is True:
         for i in range(16):
-            for sound in module.sounds_in_beat[i]:
-                if sound is not None:
-                    sound.play()
-            time.sleep(module.delay)
+            prev = time.time()
+            sounds = module.sounds_in_beat[i]
+            mixer = sounds[0].overlay(sounds[1]).overlay(sounds[2]).overlay(sounds[3])
+            play(mixer)
+            now = time.time()
+            time.sleep(module.delay-(now-prev))
 
 
 class Sequencer:
@@ -47,8 +50,11 @@ class Sequencer:
         if sound in module.sounds_in_beat[index]:
             module.sounds_in_beat[index].remove(sound)
         else:
-            if len(module.sounds_in_beat[index]) < 4:
-                module.sounds_in_beat[index].append(sound)
+            for n, i in enumerate(module.sounds_in_beat[index]):
+                if i == module.silence:
+                    module.sounds_in_beat[index][n] = sound
+                    break;
+
 
     def change_bpm(self, value):
         if value == 124:
@@ -56,4 +62,4 @@ class Sequencer:
         else:
             module.bpm += value
         module.delay = 60 / module.bpm
-        print (f'Current bpm: {module.bpm}')
+        print (f'{module.current_time()} Current bpm: {module.bpm}')

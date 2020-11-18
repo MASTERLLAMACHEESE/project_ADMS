@@ -1,7 +1,6 @@
 import module
-import pygame
+from pydub.playback import play
 from sound import Sound
-from samplerate import resample
 
 
 class Pad:
@@ -13,7 +12,7 @@ class Pad:
         module.pad_selected = btn
 
     def play_sound(self, btn):
-        module.sounds[btn].play()
+        play(module.sounds[btn])
 
     def load_sounds(self):
         for i in range(16):
@@ -33,12 +32,12 @@ class Pad:
             return
 
         module.pitch_mode = True
-        sound_array = pygame.sndarray.array(module.usb_sounds[module.selected])
         out_sounds = []
-        ratio = 0.1
+        octaves = 2
         for i in range(16):
-            print(ratio)
-            sound_resample = resample(sound_array, ratio, "sinc_fastest").astype(sound_array.dtype)
-            out_sounds.append(pygame.sndarray.make_sound(sound_resample))
-            ratio += 0.1
+            new_sample_rate = int(module.usb_sounds[module.selected].frame_rate * (2.0 ** octaves))
+            sound_resample = module.usb_sounds[module.selected]._spawn(module.usb_sounds[module.selected].raw_data,
+                                                                       overrides={'frame_rate': new_sample_rate})
+            out_sounds.append(sound_resample)
+            octaves -= 0.1
         module.sounds = out_sounds

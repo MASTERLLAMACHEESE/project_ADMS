@@ -13,7 +13,7 @@ sequencer = Sequencer()
 
 def clear_pressed_key():
     module.pressed_key = (None, None)
-    time.sleep(0.1)
+    # time.sleep(0.1)
 
 
 def check_pressed_key():

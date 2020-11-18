@@ -1,4 +1,4 @@
-import pygame
+from pydub import AudioSegment
 
 
 class Sound:
@@ -6,7 +6,7 @@ class Sound:
     def __init__(self, filepath=None):
         self.sound = None
         if filepath:
-            self.sound = pygame.mixer.Sound(filepath)
+            self.sound = AudioSegment.from_wav(filepath)
         self.name = filepath
         self.pad_pos = None
         self.seq_pos = None
