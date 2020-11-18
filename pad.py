@@ -24,7 +24,7 @@ class Pad:
 
     def toggle_pitch_mode(self):
         if not module.selected:
-            print(f'Please select a sound first')
+            print(f'{module.current_time()} Please select a sound first')
             return
 
         if module.pitch_mode:

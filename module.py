@@ -13,6 +13,8 @@ delay = None
 pitch_mode = False
 # delay = int((60 / bpm * 1000))
 
+pressed_key = (None, None)
+
 
 def current_time():
     return f'[{datetime.datetime.now().strftime("%H:%M:%S")}]'

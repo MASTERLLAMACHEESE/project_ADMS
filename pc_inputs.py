@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import traceback
-
 from pynput import keyboard
-import adms
 import module
 
 key_mappings = {
@@ -56,7 +54,7 @@ def on_press(key):
     try:
         mapped_key = key_mappings.get(key.char)
         if mapped_key:
-            adms.pressed_key(mapped_key)
+            module.pressed_key = mapped_key
     except AttributeError:
         traceback.print_exc()
     except KeyboardInterrupt:
@@ -64,6 +62,7 @@ def on_press(key):
 
 
 def start_listener():
+
     listener = keyboard.Listener(
         on_press=on_press
     )

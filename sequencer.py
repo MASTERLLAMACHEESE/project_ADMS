@@ -41,7 +41,7 @@ class Sequencer:
             self.stop()
         else:
             self.start()
-        print(f'Currently active threads: {threading.active_count()}')
+        print(f'{module.current_time()} Currently active threads: {threading.active_count()}')
 
     def toggle_sound(self, index, sound):
         if sound in module.sounds_in_beat[index]:

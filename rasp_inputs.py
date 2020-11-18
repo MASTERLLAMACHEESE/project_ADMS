@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
-import time
 import threading
-import adms
+import module
+
 # https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.raspberrypi.org%2Fdocumentation%2Fusage%2Fgpio%2F&psig=AOvVaw0ngttCGDmViun_dXn9x-9a&ust=1604311768285000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJidkZyN4ewCFQAAAAAdAAAAABAO
 # 4x4 pad io
 PAD_L1 = 19
@@ -64,23 +64,23 @@ def play_init():
 def read_line(line, key):
     GPIO.output(line, GPIO.HIGH)
     if GPIO.input(PAD_C1) == 1:
-        adms.pressed_key(key[0])
+        module.pressed_key(key[0])
     if GPIO.input(PAD_C2) == 1:
-        adms.pressed_key(key[1])
+        module.pressed_key(key[1])
     if GPIO.input(PAD_C3) == 1:
-        adms.pressed_key(key[2])
+        module.pressed_key(key[2])
     if GPIO.input(PAD_C4) == 1:
-        adms.pressed_key(key[3])
+        module.pressed_key(key[3])
     if GPIO.input(SEQ_C1) == 1:
-        adms.pressed_key(key[0])
+        module.pressed_key(key[0])
     if GPIO.input(SEQ_C2) == 1:
-        adms.pressed_key(key[1])
+        module.pressed_key(key[1])
     if GPIO.input(SEQ_C3) == 1:
-        adms.pressed_key(key[2])
+        module.pressed_key(key[2])
     if GPIO.input(SEQ_C4) == 1:
-        adms.pressed_key(key[3])
+        module.pressed_key(key[3])
     if GPIO.input(P_IN) == 1:
-        adms.pressed_key(key[0])
+        module.pressed_key(key[0])
     GPIO.output(line, GPIO.LOW)
 
 
@@ -98,16 +98,10 @@ def buttons():
 
         read_line(P_OUT, [(13, 'play')])
 
-        time.sleep(0.2)
 
-
-try:
+def start_listener():
     pad_init()
     seq_init()
     play_init()
     listener = threading.Thread(target=buttons)
     listener.start()
-    while True:
-        pass
-except KeyboardInterrupt:
-    print("\nApplication stopped")
