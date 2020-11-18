@@ -56,3 +56,4 @@ class Sequencer:
         else:
             module.bpm += value
         module.delay = 60 / module.bpm
+        print (f'Current bpm: {module.bpm}')
