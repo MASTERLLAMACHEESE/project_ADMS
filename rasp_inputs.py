@@ -64,23 +64,23 @@ def play_init():
 def read_line(line, key):
     GPIO.output(line, GPIO.HIGH)
     if GPIO.input(PAD_C1) == 1:
-        module.pressed_key(key[0])
+        module.pressed_key = key[0]
     if GPIO.input(PAD_C2) == 1:
-        module.pressed_key(key[1])
+        module.pressed_key = key[1]
     if GPIO.input(PAD_C3) == 1:
-        module.pressed_key(key[2])
+        module.pressed_key = key[2]
     if GPIO.input(PAD_C4) == 1:
-        module.pressed_key(key[3])
+        module.pressed_key = key[3]
     if GPIO.input(SEQ_C1) == 1:
-        module.pressed_key(key[0])
+        module.pressed_key = key[0]
     if GPIO.input(SEQ_C2) == 1:
-        module.pressed_key(key[1])
+        module.pressed_key = key[1]
     if GPIO.input(SEQ_C3) == 1:
-        module.pressed_key(key[2])
+        module.pressed_key = key[2]
     if GPIO.input(SEQ_C4) == 1:
-        module.pressed_key(key[3])
+        module.pressed_key = key[3]
     if GPIO.input(P_IN) == 1:
-        module.pressed_key(key[0])
+        module.pressed_key = key[0]
     GPIO.output(line, GPIO.LOW)
 
 
