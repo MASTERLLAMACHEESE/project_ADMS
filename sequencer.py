@@ -32,6 +32,7 @@ class Sequencer:
         print(f'\n{module.current_time()} Starting sequencer\n'
               f'{module.current_time()} Please wait...')
         module.seq_loop = True
+        time.sleep(1)
         self.seq_thread = threading.Thread(target=sequencer_loop)
         self.seq_thread.start()
         print(f'{module.current_time()} Sequencer ready\n')

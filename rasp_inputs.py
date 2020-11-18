@@ -91,10 +91,10 @@ def buttons():
         read_line(PAD_L3, [(9, 'pad'), (10, 'pad'), (11, 'pad'), (12, 'pad')])
         read_line(PAD_L4, [(13, 'pad'), (14, 'pad'), (15, 'pad'), (16, 'pad')])
 
-        read_line(SEQ_L1, [(1, 'seq'), (2, 'seq'), (3, 'seq'), (4, 'seq')])
-        read_line(SEQ_L2, [(5, 'seq'), (6, 'seq'), (7, 'seq'), (8, 'seq')])
-        read_line(SEQ_L3, [(9, 'seq'), (10, 'seq'), (11, 'seq'), (12, 'seq')])
-        read_line(SEQ_L4, [(13, 'seq'), (14, 'seq'), (15, 'seq'), (16, 'seq')])
+        read_line(SEQ_L1, [(1, 'seq'), (5, 'seq'), (9, 'seq'), (13, 'seq')])
+        read_line(SEQ_L2, [(2, 'seq'), (6, 'seq'), (10, 'seq'), (14, 'seq')])
+        read_line(SEQ_L3, [(3, 'seq'), (7, 'seq'), (11, 'seq'), (15, 'seq')])
+        read_line(SEQ_L4, [(4, 'seq'), (8, 'seq'), (12, 'seq'), (16, 'seq')])
 
         read_line(P_OUT, [(13, 'play')])
 
