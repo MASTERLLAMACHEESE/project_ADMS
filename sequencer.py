@@ -17,7 +17,7 @@ def sequencer_loop():
             if mixer:
                 play(mixer)
             sys_delay = time.time() - prev
-            time.sleep(module.delay-(sys_delay if sys_delay > module.delay else module.delay))
+            time.sleep(module.delay-(sys_delay if sys_delay < module.delay else module.delay))
 
 
 class Sequencer:
@@ -55,8 +55,10 @@ class Sequencer:
     def toggle_sound(self, index, sound):
         if sound in module.sounds_in_beat[index]:
             module.sounds_in_beat[index].remove(sound)
+            time.sleep(0.5)
         else:
             module.sounds_in_beat[index].append(sound)
+            time.sleep(0.5)
 
     def change_bpm(self, value):
         if value == 124:
