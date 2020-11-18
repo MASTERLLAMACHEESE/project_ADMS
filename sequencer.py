@@ -17,7 +17,7 @@ def sequencer_loop():
             if mixer:
                 play(mixer)
             sys_delay = time.time() - prev
-            time.sleep(module.delay-(sys_delay if sys_delay != 0 else module.delay))
+            time.sleep(module.delay-(sys_delay if sys_delay > 0 else module.delay))
 
 
 class Sequencer:
