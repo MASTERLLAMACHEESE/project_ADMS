@@ -1,6 +1,6 @@
 import module
 from pydub.playback import play
-from sound import Sound
+from pydub import AudioSegment
 
 
 class Pad:
@@ -17,13 +17,12 @@ class Pad:
     def load_sounds(self):
         for i in range(16):
             try:
-                sound = Sound(f"/media/usb/{str(i+1)}.wav")
+                sound = AudioSegment.from_wav(f"/media/usb/{str(i+1)}.wav")
                 module.sound_path = '/media/usb'
             except FileNotFoundError:
-                sound = Sound(f"./sounds/{str(i + 1)}.wav")
+                sound = AudioSegment.from_wav(f"./sounds/{str(i + 1)}.wav")
                 module.sound_path = './sounds'
-            sound.pad_pos = i
-            module.sounds.append(sound.sound)
+            module.sounds.append(sound)
         module.usb_sounds = module.sounds
 
     def toggle_pitch_mode(self):
