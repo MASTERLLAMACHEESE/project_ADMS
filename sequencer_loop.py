@@ -4,25 +4,6 @@ from pydub.playback import play
 
 
 def sequencer_loop():
-    module.sounds_in_beat = [
-    [module.sounds[0], module.sounds[5], module.sounds[7]],
-    [module.sounds[0], module.sounds[7]],
-    [module.sounds[0], module.sounds[5], module.sounds[7]],
-    [module.sounds[0], module.sounds[7]],
-    [module.sounds[0], module.sounds[5], module.sounds[7]],
-    [module.sounds[0], module.sounds[7]],
-    [module.sounds[0], module.sounds[5], module.sounds[7]],
-    [module.sounds[0], module.sounds[7]],
-    [module.sounds[0], module.sounds[5], module.sounds[7]],
-    [module.sounds[0], module.sounds[7]],
-    [module.sounds[0], module.sounds[5], module.sounds[7]],
-    [module.sounds[0], module.sounds[7]],
-    [module.sounds[0], module.sounds[5], module.sounds[7]],
-    [module.sounds[0], module.sounds[7]],
-    [module.sounds[0], module.sounds[5], module.sounds[7]],
-    [module.sounds[0], module.sounds[7]],
-
-]
     while module.seq_loop is True:
         for i in range(16):
             prev = time.time()

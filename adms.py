@@ -53,7 +53,7 @@ class Pad:
 def sequencer_loop():
     while module.seq_loop is True:
         for i in range(16):
-            prev = time.time()
+
             sounds = module.sounds_in_beat[i]
             mixed = None
             if len(sounds) == 4:
@@ -68,9 +68,9 @@ def sequencer_loop():
             if mixed:
                 play(mixed)
 
-            sys_delay = time.time() - prev
-            print(f'delay: {module.delay - (sys_delay if sys_delay < module.delay else module.delay)}')
-            time.sleep(module.delay - (sys_delay if sys_delay < module.delay else module.delay))
+
+            print(f'delay: {module.delay}')
+            time.sleep(module.delay)
 
 
 class Sequencer:
