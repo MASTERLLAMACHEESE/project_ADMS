@@ -69,6 +69,7 @@ def sequencer_loop():
                 play(mixed)
 
             sys_delay = time.time() - prev
+            print(f'delay: {module.delay - (sys_delay if sys_delay < module.delay else module.delay)}')
             time.sleep(module.delay - (sys_delay if sys_delay < module.delay else module.delay))
 
 
