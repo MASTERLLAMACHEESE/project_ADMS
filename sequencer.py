@@ -1,23 +1,7 @@
 import time
 import module
 import threading
-from pydub.playback import play
-
-
-def sequencer_loop():
-    while module.seq_loop is True:
-        for i in range(16):
-            prev = time.time()
-            mixer = None
-            for sound in module.sounds_in_beat[i]:
-                if not mixer:
-                    mixer = sound
-                else:
-                    mixer = mixer.overlay(sound)
-            if mixer:
-                play(mixer)
-            sys_delay = time.time() - prev
-            time.sleep(module.delay - (sys_delay if sys_delay < module.delay else module.delay))
+from sequencer_loop import sequencer_loop
 
 
 class Sequencer:
@@ -53,12 +37,11 @@ class Sequencer:
         print(f'{module.current_time()} Currently active threads: {threading.active_count()}')
 
     def toggle_sound(self, index, sound):
-        if sound in module.sounds_in_beat[index]:
-            module.sounds_in_beat[index].remove(sound)
-            time.sleep(0.3)
-        else:
+        if sound not in module.sounds_in_beat[index]:
             module.sounds_in_beat[index].append(sound)
-            time.sleep(0.3)
+        else:
+            module.sounds_in_beat[index].remove(sound)
+        time.sleep(0.3)
 
     def change_bpm(self, value):
         if value == 124:
