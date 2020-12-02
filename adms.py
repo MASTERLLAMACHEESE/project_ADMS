@@ -22,6 +22,10 @@ def check_pressed_key():
             sequencer.toggle_sound(value-1, module.sounds[module.selected-1])
     if btn_type == 'pad':
         module.selected = value
+        for beat in module.sounds_in_beat:
+            if module.sounds[value] in beat:
+                module.pos_in_seq.append(value)
+        module.pad_clicked = True
         if module.playback:
             pad.play_sound(value-1)
     if btn_type == 'bpm':

@@ -10,9 +10,6 @@ class Pad:
     def __init__(self):
         pass
 
-    def select_sound(self, btn):
-        module.pad_selected = btn
-
     def play_sound(self, btn):
         threading.Thread(target=play, args=(module.sounds[btn],)).start()
         time.sleep(0.1)

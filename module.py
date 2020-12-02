@@ -16,6 +16,9 @@ blink_led = False
 current_beat = None
 pressed_key = (None, None)
 
+pos_in_seq = []
+pad_clicked = False
+
 seq_led = 0
 pitch_led = 1
 playback_led = 2
