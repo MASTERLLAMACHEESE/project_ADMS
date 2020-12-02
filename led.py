@@ -3,7 +3,7 @@ import board
 import module
 import neopixel
 import threading
-pixels = neopixel.NeoPixel(board.D18, 60)
+pixels = neopixel.NeoPixel(board.D18, 19)
 delay = 0.00001
 pixels.fill((0, 0, 0))
 
