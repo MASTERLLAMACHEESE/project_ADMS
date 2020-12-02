@@ -1,7 +1,6 @@
 import time
 import module
 import threading
-from sequencer_loop import sequencer_loop
 
 
 def sequencer_loop():
