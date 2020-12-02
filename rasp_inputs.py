@@ -68,7 +68,8 @@ def buttons():
     except KeyboardInterrupt:
         return
 
-            # Starts a thread that checks pins
+
+# Starts a thread that checks pins
 def start_listener():
     btns_init()
     listener = threading.Thread(target=buttons)
