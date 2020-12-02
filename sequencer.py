@@ -4,6 +4,33 @@ import threading
 from sequencer_loop import sequencer_loop
 
 
+def sequencer_loop():
+    try:
+        while module.seq_loop is True:
+            for i in range(16):
+                if not module.seq_loop:
+                    break
+                module.current_beat = i
+                prev = time.time()
+                sounds = module.sounds_in_beat[i]
+                mixed = None
+                if len(sounds) == 4:
+                    mixed = sounds[0].overlay(sounds[1]).overlay(sounds[2]).overlay(sounds[3])
+                if len(sounds) == 3:
+                    mixed = sounds[0].overlay(sounds[1]).overlay(sounds[2])
+                if len(sounds) == 2:
+                    mixed = sounds[0].overlay(sounds[1])
+                if len(sounds) == 1:
+                    mixed = sounds[0]
+                if mixed:
+                    module.blink_led = True
+                    threading.Thread(target=play, args=(mixed,)).start()
+                playtime = time.time() - prev
+                time.sleep((module.delay - playtime) if playtime < module.delay else 0)
+    except KeyboardInterrupt:
+        return
+
+
 class Sequencer:
 
     def __init__(self, start=False):
@@ -39,8 +66,10 @@ class Sequencer:
     def toggle_sound(self, index, sound):
         if sound not in module.sounds_in_beat[index]:
             module.sounds_in_beat[index].append(sound)
+            print(f'{module.current_time()} SEQ: Added to pos: {index+1}')
         else:
             module.sounds_in_beat[index].remove(sound)
+            print(f'{module.current_time()} SEQ: Removed from pos: {index+1}')
         time.sleep(0.3)
 
     def change_bpm(self, value):
