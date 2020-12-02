@@ -1,6 +1,7 @@
 import time
 import module
 import threading
+from pydub.playback import play
 
 
 def sequencer_loop():
