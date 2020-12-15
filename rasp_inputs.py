@@ -1,8 +1,11 @@
+"""
+!!!This file only works on Raspberry Pi!!!
+"""
 import time
-
 import RPi.GPIO as GPIO
 import threading
 import module
+# below is a url to GPIO pin layout
 # https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.raspberrypi.org%2Fdocumentation%2Fusage%2Fgpio%2F&psig=AOvVaw0ngttCGDmViun_dXn9x-9a&ust=1604311768285000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJidkZyN4ewCFQAAAAAdAAAAABAO
 
 
@@ -10,7 +13,7 @@ import module
 ROW = [26, 19, 13, 6, 5, 0]
 COL = [21, 20, 16, 12, 1, 7]
 
-# Every button definiton in the 6x6 matrix
+# Every button definition in the 6x6 matrix
 DEFINITIONS = [
     [(4, 'pad'), (3, 'pad'), (2, 'pad'), (1, 'pad'), (8, 'pad'), (7, 'pad')],
     [(6, 'pad'), (5, 'pad'), (12, 'pad'), (11, 'pad'), (10, 'pad'), (9, 'pad')],
