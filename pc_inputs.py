@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+!!!This file only works on PC with pynput!!!
+"""
 import traceback
 from pynput import keyboard
 import module
@@ -51,8 +54,12 @@ key_mappings = {
 
 
 def on_press(key):
+    """
+    Sets pressed key value on module
+    """
     try:
-        mapped_key = key_mappings.get(key.char)
+        # gets pressed key char value and searches it from dict with get method.
+        mapped_key = key_mappings.get(key.char)  # gets value and type tuple or None
         if mapped_key:
             module.pressed_key = mapped_key
     except AttributeError:
@@ -62,7 +69,9 @@ def on_press(key):
 
 
 def start_listener():
-
+    """
+    Starts keyboard listener thread
+    """
     listener = keyboard.Listener(
         on_press=on_press
     )

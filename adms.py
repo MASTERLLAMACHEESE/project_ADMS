@@ -3,8 +3,6 @@ import time
 import module
 from pad import Pad
 from sequencer import Sequencer
-from led import start_led
-from ambient_led import start_ambient
 
 pad = Pad()
 sequencer = Sequencer()
@@ -16,37 +14,47 @@ def clear_pressed_key():
 
 
 def check_pressed_key():
+    """
+    Get pressed key value from module and to something with it
+    """
     value, btn_type = module.pressed_key
     if btn_type == 'seq':
         if module.selected:
-            sequencer.toggle_sound(value-1, module.sounds[module.selected-1])
+            sequencer.toggle_sound(value-1, module.sounds[module.selected-1])  # add or remove sound
     if btn_type == 'pad':
-        module.selected = value
-        for beat in module.sounds_in_beat:
-            if module.sounds[value] in beat:
-                module.pos_in_seq.append(value)
-        module.pad_clicked = True
+        module.selected = value  # selected sound value
+        for i, beat in enumerate(module.sounds_in_beat):  # checks if sound is already in sequencer
+            if module.sounds[value-1] in beat:
+                module.pos_in_seq.append(i)
+        module.pad_clicked = True  # pad was clicked
         if module.playback:
-            pad.play_sound(value-1)
+            pad.play_sound(value-1)  # Play sound
     if btn_type == 'bpm':
-        sequencer.change_bpm(value)
+        sequencer.change_bpm(value)  # Change BPM
     if btn_type == 'pitch':
-        pad.toggle_pitch_mode()
+        pad.toggle_pitch_mode()  # Toggle pitch mode
     if btn_type == 'play':
-        sequencer.toggle_play()
+        sequencer.toggle_play()  # Toggle sequencer
     if btn_type == 'playback':
-        module.playback = not module.playback
+        module.playback = not module.playback  # Toggle pad sound playback
         print(f'{module.current_time()} Playback {"enabled" if module.playback else "disabled"}')
         time.sleep(0.3)
     clear_pressed_key()
 
 
 def pc_init():
+    """
+    Starts PC specific threads
+    """
     from pc_inputs import start_listener
     start_listener()
 
 
 def rasp_init():
+    """
+    Starts raspberry specific threads
+    """
+    from led import start_led
     from rasp_inputs import start_listener
     start_listener()
     start_led()
@@ -65,7 +73,7 @@ if sys.argv[1] == 'pc':
 if sys.argv[1] == 'rasp':
     rasp_init()
 
-pad.load_sounds()
+pad.load_sounds()  # ToDo maybe this need to happen on Pad() init?
 
 while True:
     check_pressed_key()
