@@ -26,12 +26,6 @@ class App:
         self.pad_view_btn.configure(background='white')
 
 
-
-
-
-
-
-
 if __name__ == "__main__":
 
     master=tkinter.Tk()
