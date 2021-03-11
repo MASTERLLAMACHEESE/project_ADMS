@@ -1,37 +1,53 @@
-import tkinter
-import tkinter.font as tkFont
+import tkinter as tk
 
-#myFont = tkFont.Font(family = 'Helvetica', size = 36, weight = 'bold')
+class Page(tk.Frame):
+    def __init__(self, *args, **kwargs):
+        tk.Frame.__init__(self, *args, **kwargs)
+    def show(self):
+        self.lift()
 
-class App:
+class Page1(Page):
+   def __init__(self, *args, **kwargs):
+       Page.__init__(self, *args, **kwargs)
+       label = tk.Label(self, text="This is page 1")
+       label.pack(side="top", fill="both", expand=True)
 
-    def __init__(self, master) -> None:
+class Page2(Page):
+   def __init__(self, *args, **kwargs):
+       Page.__init__(self, *args, **kwargs)
+       label = tk.Label(self, text="This is page 2")
+       label.pack(side="top", fill="both", expand=True)
 
-        self.master = master
-        self.pad_view_btn=tkinter.Button(self.master, text="PAD", command = self.pad_view, background="white")
-        self.pad_view_btn.grid(row=1,column=0)
+class MainView(tk.Frame):
+    def __init__(self, *args, **kwargs):
+        tk.Frame.__init__(self, *args, **kwargs)
+        p1 = Page1(self)
+        p2 = Page2(self)
 
-        self.seq_view_btn=tkinter.Button(self.master, text="Sequencer", command = self.seq_view, background="white")
-        self.seq_view_btn.grid(row=2,column=0)
+        buttonframe = tk.Frame(self)
+        container = tk.Frame(self)
+        buttonframe.pack(side="top", fill="x", expand=False)
+        container.pack(side="top", fill="both", expand=True)
 
-    def pad_view(self):
-        print ("Pad view pressed")
-        self.pad_view_btn.configure(background='green')
-        self.seq_view_btn.configure(background='white')
+        p1.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        p2.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+
+        b1 = tk.Button(buttonframe, text="Page 1", command=p1.lift)
+        b2 = tk.Button(buttonframe, text="Page 2", command=p2.lift)
+
+        b1.pack(side="left")
+        b2.pack(side="left")
+
+        p1.show()
 
 
-    def	seq_view(self):
-        print ("Seq view pressed")
-        self.seq_view_btn.configure(background='green')
-        self.pad_view_btn.configure(background='white')
-
+def main():
+    root = tk.Tk()
+    main = MainView(root)
+    main.pack(side="top", fill="both", expand=True)
+    root.wm_geometry("800x480")
+    root.title("Project ADMS")
+    root.mainloop()
 
 if __name__ == "__main__":
-
-    master=tkinter.Tk()
-    master.title("Project ADMS")
-    master.geometry('800x480')
-
-    app = App(master)
-
-    master.mainloop()
+    main()
