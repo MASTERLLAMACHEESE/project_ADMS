@@ -19,6 +19,10 @@ class Page1(Page):
 
         self.DrawGrid()
 
+        #self.c.create_oval(1*self.mag,1*self.mag,(1+1)*self.mag,(1+1)*self.mag,fill="red")
+        self.c.create_text(1*self.mag,1*self.mag, fill="black",font="Times 20 italic bold",text="kick 1")
+        #self.canvas.create_text(100,10,fill="darkblue",font="Times 20 italic bold",text="Click the bubbles that are multiples of two.")
+
         grid = self.c
         grid.pack(side="top", fill="both", expand=True)
 
@@ -62,7 +66,7 @@ def main():
     root = tk.Tk()
     main = MainView(root)
     main.pack(side="top", fill="both", expand=True)
-    root.wm_geometry("800x480")
+    root.wm_geometry("800x800")
     root.title("Project ADMS")
     root.mainloop()
 
