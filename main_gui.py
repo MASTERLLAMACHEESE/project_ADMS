@@ -1,4 +1,7 @@
 import tkinter as tk
+import tkinter.font as tkfont
+import tkinter.ttk
+from tkinter import HORIZONTAL, VERTICAL
 
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -11,33 +14,47 @@ class Page1(Page):
         Page.__init__(self, *args, **kwargs)
     #    label = tk.Label(self, text="This is page 1")
     #    label.pack(side="top", fill="both", expand=True)
-        self.mag = 80
-        self.rows = 4
-        self.cols = 4
+        fontstyle = tkfont.Font(family="Lucida Grande", size=20)
 
-        self.c = tk.Canvas(self, width=self.mag*self.cols+2*self.mag, height = self.mag*self.rows+2*self.mag, bg='white')
+        tk.Label(self, text="Kick 1", font=fontstyle).grid(row=1, column=1)
+        tk.Label(self, text="Snare 1", font=fontstyle).grid(row=3, column=1)
+        tk.Label(self, text="Closed Hat 1", font=fontstyle).grid(row=5, column=1)
+        tk.Label(self, text="Closed Hat 5", font=fontstyle).grid(row=7, column=1)
+        
 
-        self.DrawGrid()
+        tk.Label(self, text="Kick 2", font=fontstyle).grid(row=1, column=3)
+        tk.Label(self, text="Snare 2", font=fontstyle).grid(row=3, column=3)
+        tk.Label(self, text="Closed Hat 2", font=fontstyle).grid(row=5, column=3)
+        tk.Label(self, text="Crash 1", font=fontstyle).grid(row=7, column=3)
 
-        #self.c.create_oval(1*self.mag,1*self.mag,(1+1)*self.mag,(1+1)*self.mag,fill="red")
-        self.c.create_text(1*self.mag,1*self.mag, fill="black",font="Times 20 italic bold",text="kick 1")
-        #self.canvas.create_text(100,10,fill="darkblue",font="Times 20 italic bold",text="Click the bubbles that are multiples of two.")
 
-        grid = self.c
-        grid.pack(side="top", fill="both", expand=True)
+        tk.Label(self, text="Kick 3", font=fontstyle).grid(row=1, column=5)
+        tk.Label(self, text="Snare 3", font=fontstyle).grid(row=3, column=5)
+        tk.Label(self, text="Closed Hat 3", font=fontstyle).grid(row=5, column=5)
+        tk.Label(self, text="Tom 1", font=fontstyle).grid(row=7, column=5)
 
-    def DrawGrid(self):
-        for i in range(0,self.cols+1):
-            self.c.create_line((i+1)*self.mag,self.mag, (i+1)*self.mag,(self.rows+1)*self.mag)
-        for i in range(0,self.rows+1):
-            self.c.create_line(self.mag,(i+1)*self.mag, self.mag*(1+self.cols),(i+1)*self.mag)
+        tk.Label(self, text="Kick 4", font=fontstyle).grid(row=1, column=7)
+        tk.Label(self, text="Clap 1", font=fontstyle).grid(row=3, column=7)
+        tk.Label(self, text="Closed Hat 4", font=fontstyle).grid(row=5, column=7)
+        tk.Label(self, text="Floor Tom 1", font=fontstyle).grid(row=7, column=7)
 
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=0, row=0, rowspan=8, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=2, row=0, rowspan=8, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=4, row=0, rowspan=8, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=6, row=0, rowspan=8, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=8, row=0, rowspan=8, sticky='ns')
+
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=0, columnspan=8, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=2, columnspan=8, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=4, columnspan=8, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=6, columnspan=8, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=8, columnspan=8, sticky='ew')
 
 class Page2(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="This is page 2")
-        label.pack(side="top", fill="both", expand=True)
+        # label = tk.Label(self, text="This is page 2")
+        # label.pack(side="top", fill="both", expand=True)
 
 class MainView(tk.Frame):
     def __init__(self, *args, **kwargs):
