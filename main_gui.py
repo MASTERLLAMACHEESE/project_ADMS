@@ -59,6 +59,9 @@ class Page2(Page):
         Page.__init__(self, *args, **kwargs)
         # label = tk.Label(self, text="This is page 2")
         # label.pack(side="top", fill="both", expand=True)
+
+ 
+
         fontstyle = tkfont.Font(family="Lucida Grande", size=12)
 
         tk.Label(self, text="Bar 1", font=fontstyle).grid(row=0, column=0)
@@ -78,8 +81,6 @@ class Page2(Page):
         tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=11, columnspan=8, sticky='ew')
         tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=16, columnspan=8, sticky='ew')
         tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=21, columnspan=8, sticky='ew')
-
-    
 
 
 class MainView(tk.Frame):
