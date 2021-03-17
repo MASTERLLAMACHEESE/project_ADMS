@@ -2,6 +2,7 @@ import tkinter as tk
 import tkinter.font as tkfont
 import tkinter.ttk
 from tkinter import HORIZONTAL, VERTICAL
+import module
 
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -11,6 +12,9 @@ class Page(tk.Frame):
 
 class Page1(Page):
     def __init__(self, *args, **kwargs):
+        """
+        layout for page 1, PAD, creates, grid to show what sound is where
+        """
         Page.__init__(self, *args, **kwargs)
     #    label = tk.Label(self, text="This is page 1")
     #    label.pack(side="top", fill="both", expand=True)
@@ -55,6 +59,28 @@ class Page2(Page):
         Page.__init__(self, *args, **kwargs)
         # label = tk.Label(self, text="This is page 2")
         # label.pack(side="top", fill="both", expand=True)
+        fontstyle = tkfont.Font(family="Lucida Grande", size=12)
+
+        tk.Label(self, text="Bar 1", font=fontstyle).grid(row=0, column=0)
+        tk.Label(self, text="Hit 1", font=fontstyle).grid(row=0, column=1)
+        tk.Label(self, text="Hit 2", font=fontstyle).grid(row=0, column=3)
+        tk.Label(self, text="Hit 3", font=fontstyle).grid(row=0, column=5)
+        tk.Label(self, text="Hit 4", font=fontstyle).grid(row=0, column=7)
+
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=0, row=1, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=2, row=0, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=4, row=0, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=6, row=0, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=8, row=0, rowspan=21, sticky='ns')
+
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=1, columnspan=8, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=5, columnspan=8, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=11, columnspan=8, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=16, columnspan=8, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=21, columnspan=8, sticky='ew')
+
+    
+
 
 class MainView(tk.Frame):
     def __init__(self, *args, **kwargs):
