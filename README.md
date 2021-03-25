@@ -10,7 +10,7 @@ Features:
 
 Requirements: 
 - pydub
-- pyinput - *for PC*
+- pynput - *for PC*
 - Raspberry Pi 4 w/ Raspberry Pi OS Lite
 - **THIS LIST IS NOT COMPLETE!!!**
 

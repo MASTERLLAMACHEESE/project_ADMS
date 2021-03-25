@@ -54,7 +54,9 @@ def pc_init():
     Starts PC specific threads
     """
     from pc_inputs import start_listener
+    from main_gui import start_gui
     start_listener()
+    start_gui()
 
 
 def rasp_init():
@@ -63,8 +65,11 @@ def rasp_init():
     """
     from led import start_led
     from rasp_inputs import start_listener
+    from main_gui import start_gui
     start_listener()
     start_led()
+    start_gui()
+
 
 
 if len(sys.argv) < 2:

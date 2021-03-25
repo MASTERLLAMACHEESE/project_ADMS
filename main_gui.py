@@ -3,6 +3,7 @@ import tkinter.font as tkfont
 import tkinter.ttk
 from tkinter import HORIZONTAL, VERTICAL
 import module
+import threading
 
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -63,6 +64,13 @@ class Page2(Page):
 
         self.fontstyle = tkfont.Font(family="Lucida Grande", size=12)
 
+        self.position = {
+            1 : (1, 5, 9, 13),
+            3 : (2, 6, 10, 14),
+            5 : (3, 7, 11, 15),
+            7 : (4, 8, 12, 16),
+        }
+
         tk.Label(self, text="Bar 1", font=self.fontstyle).grid(row=0, column=0)
         tk.Label(self, text="Hit 1", font=self.fontstyle).grid(row=0, column=1)
         tk.Label(self, text="Hit 2", font=self.fontstyle).grid(row=0, column=3)
@@ -91,14 +99,9 @@ class Page2(Page):
                         if amount < 4:
                             if amount >= 1 and (amount + 1) < 4:
                                 amount =+ 1
-                            if module.pos_in_seq == 1 or 5 or 9 or 13:
-                                column_space = 1
-                            if module.pos_in_seq == 2 or 6 or 10 or 14:
-                                column_space = 3
-                            if module.pos_in_seq == 3 or 7 or 11 or 15:
-                                column_space = 5
-                            if module.pos_in_seq == 4 or 8 or 12 or 16:
-                                column_space = 7
+                            for key, value in self.position:
+                                if module.pos_in_seq in value:
+                                    column_space = key
                             tk.Label(self, text=module.gui_list[module.pos_in_seq], font=self.fontstyle).grid(column=column_space, row=amount)
 
         #get text removed in adms.py from module.py and remove it from the correct text field in grid
@@ -110,14 +113,9 @@ class Page2(Page):
                         if amount < 4:
                             if amount >= 1 and (amount + 1) < 4:
                                 amount =+ 1
-                            if module.pos_in_seq == 1 or 5 or 9 or 13:
-                                column_space = 1
-                            if module.pos_in_seq == 2 or 6 or 10 or 14:
-                                column_space = 3
-                            if module.pos_in_seq == 3 or 7 or 11 or 15:
-                                column_space = 5
-                            if module.pos_in_seq == 4 or 8 or 12 or 16:
-                                column_space = 7
+                            for key, value in self.position:
+                                if module.pos_in_seq in value:
+                                    column_space = key
                             tk.Label(self, text="      ", font=self.fontstyle).grid(column=column_space, row=amount)
 
 
@@ -154,3 +152,13 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+def start_gui():
+    """
+    Start gui thread
+    ToDo These threads probably don't need to exist as threads, but there's no time to change that
+    We could just make callback functions for them
+    def change_seq_led(pos)
+    def togglePitchLed() etc
+    """
+    threading.Thread(target=main).start()
