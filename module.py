@@ -21,6 +21,8 @@ pressed_key = (None, None)  # If a key gets pressed, the value type tuple gets s
 pos_in_seq = []  # When Pad button is pressed, its positions in sequencer will be saved here, used for leds
 pad_clicked = False
 
+gui_list = [[] for y in range(16)]
+
 # led indexes
 seq_led = 16
 pitch_led = 17

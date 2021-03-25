@@ -3,7 +3,6 @@ import time
 import module
 from pad import Pad
 from sequencer import Sequencer
-import main_gui
 
 pad = Pad()
 sequencer = Sequencer()
@@ -120,3 +119,9 @@ class gui_seq():
 
     def create_list(self):
         #create list to store in seq_btn place, pat_btn values word
+        for e in gui_seq.pad_mapping:
+            if e not in module.gui_list[module.pos_in_seq]:
+                if len(module.gui_list[module.pos_in_seq]) < 4:
+                    module.gui_list[module.pos_in_seq].append(e)
+            else:
+                module.gui_list[module.pos_in_seq].remove(e)

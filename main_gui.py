@@ -59,16 +59,15 @@ class Page2(Page):
         Page.__init__(self, *args, **kwargs)
         # label = tk.Label(self, text="This is page 2")
         # label.pack(side="top", fill="both", expand=True)
+        self.active_list = [[] for y in range(16)]
 
- 
+        self.fontstyle = tkfont.Font(family="Lucida Grande", size=12)
 
-        fontstyle = tkfont.Font(family="Lucida Grande", size=12)
-
-        tk.Label(self, text="Bar 1", font=fontstyle).grid(row=0, column=0)
-        tk.Label(self, text="Hit 1", font=fontstyle).grid(row=0, column=1)
-        tk.Label(self, text="Hit 2", font=fontstyle).grid(row=0, column=3)
-        tk.Label(self, text="Hit 3", font=fontstyle).grid(row=0, column=5)
-        tk.Label(self, text="Hit 4", font=fontstyle).grid(row=0, column=7)
+        tk.Label(self, text="Bar 1", font=self.fontstyle).grid(row=0, column=0)
+        tk.Label(self, text="Hit 1", font=self.fontstyle).grid(row=0, column=1)
+        tk.Label(self, text="Hit 2", font=self.fontstyle).grid(row=0, column=3)
+        tk.Label(self, text="Hit 3", font=self.fontstyle).grid(row=0, column=5)
+        tk.Label(self, text="Hit 4", font=self.fontstyle).grid(row=0, column=7)
 
         tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=0, row=1, rowspan=21, sticky='ns')
         tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=2, row=0, rowspan=21, sticky='ns')
@@ -77,10 +76,49 @@ class Page2(Page):
         tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=8, row=0, rowspan=21, sticky='ns')
 
         tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=1, columnspan=8, sticky='ew')
-        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=5, columnspan=8, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=6, columnspan=8, sticky='ew')
         tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=11, columnspan=8, sticky='ew')
         tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=16, columnspan=8, sticky='ew')
         tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=21, columnspan=8, sticky='ew')
+
+    def gui_places(self):
+        #get text created in adms.py from module.py and set it to the correct text field in grid
+        for e in module.gui_list:
+            if e not in self.active_list[module.pos_in_seq]:
+                for x in range (16):
+                    if module.pos_in_seq == x:
+                        amount = len(self.active_list[module.pos_in_seq])
+                        if amount < 4:
+                            if amount >= 1 and (amount + 1) < 4:
+                                amount =+ 1
+                            if module.pos_in_seq == 1 or 5 or 9 or 13:
+                                column_space = 1
+                            if module.pos_in_seq == 2 or 6 or 10 or 14:
+                                column_space = 3
+                            if module.pos_in_seq == 3 or 7 or 11 or 15:
+                                column_space = 5
+                            if module.pos_in_seq == 4 or 8 or 12 or 16:
+                                column_space = 7
+                            tk.Label(self, text=module.gui_list[module.pos_in_seq], font=self.fontstyle).grid(column=column_space, row=amount)
+
+        #get text removed in adms.py from module.py and remove it from the correct text field in grid
+        for y in self.active_list:
+            if e not in module.gui_list[module.pos_in_seq]:
+                 for x in range (16):
+                    if module.pos_in_seq == x:
+                        amount = len(self.active_list[module.pos_in_seq])
+                        if amount < 4:
+                            if amount >= 1 and (amount + 1) < 4:
+                                amount =+ 1
+                            if module.pos_in_seq == 1 or 5 or 9 or 13:
+                                column_space = 1
+                            if module.pos_in_seq == 2 or 6 or 10 or 14:
+                                column_space = 3
+                            if module.pos_in_seq == 3 or 7 or 11 or 15:
+                                column_space = 5
+                            if module.pos_in_seq == 4 or 8 or 12 or 16:
+                                column_space = 7
+                            tk.Label(self, text="      ", font=self.fontstyle).grid(column=column_space, row=amount)
 
 
 class MainView(tk.Frame):
