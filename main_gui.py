@@ -194,3 +194,13 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+def start_gui():
+    """
+    Start gui thread
+    ToDo These threads probably don't need to exist as threads, but there's no time to change that
+    We could just make callback functions for them
+    def change_seq_led(pos)
+    def togglePitchLed() etc
+    """
+    threading.Thread(target=main).start()
