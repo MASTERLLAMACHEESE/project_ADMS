@@ -41,6 +41,7 @@ def check_pressed_key():
 
     value, btn_type = module.pressed_key
     if btn_type == 'seq':
+        seq_temp = value
         if module.selected:
             sequencer.toggle_sound(value-1, module.sounds[module.selected-1])  # add or remove sound
 
@@ -68,12 +69,12 @@ def check_pressed_key():
         time.sleep(0.3)
     clear_pressed_key()
 
-    for e in enumerate(pad_mapping):
-            if e not in module.gui_list[module.pos_in_seq]:
-                if len(module.gui_list[module.pos_in_seq]) < 4:
-                    module.gui_list[module.pos_in_seq].append(e)
+    for e in pad_mapping:
+            if e not in module.gui_list[module.pos_in_seq(seq_temp)]:
+                if len(module.gui_list[module.pos_in_seq(seq_temp)]) < 4:
+                    module.gui_list[module.pos_in_seq(seq_temp)].append(e)
             else:
-                module.gui_list[module.pos_in_seq].remove(e)
+                module.gui_list[module.pos_in_seq(seq_temp)].remove(e)
 
 
 def pc_init():
