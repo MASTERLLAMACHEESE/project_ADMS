@@ -68,7 +68,7 @@ def check_pressed_key():
         time.sleep(0.3)
     clear_pressed_key()
 
-    for e in pad_mapping:
+    for e in enumerate(pad_mapping):
             if e not in module.gui_list[module.pos_in_seq]:
                 if len(module.gui_list[module.pos_in_seq]) < 4:
                     module.gui_list[module.pos_in_seq].append(e)
