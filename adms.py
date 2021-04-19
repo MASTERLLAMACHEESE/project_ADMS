@@ -40,12 +40,11 @@ def check_pressed_key():
     }
 
     value, btn_type = module.pressed_key
-    seq_temp = module.pressed_key[0]
     seq_temp_check = 0
     if btn_type == 'seq':
-        seq_temp_check = 1
         if module.selected:
             sequencer.toggle_sound(value-1, module.sounds[module.selected-1])  # add or remove sound
+            seq_temp_check = 1
 
     if btn_type == 'pad':
         module.selected = value  # selected sound value
@@ -73,11 +72,11 @@ def check_pressed_key():
 
     if seq_temp_check == 1:
         for e in pad_mapping:
-                if e not in module.gui_list[module.pos_in_seq[seq_temp-1]]:
-                    if len(module.gui_list[module.pos_in_seq[seq_temp-1]]) < 4:
-                        module.gui_list[module.pos_in_seq[seq_temp-1]].append(e)
+                if e not in module.gui_list[module.pos_in_seq[module.beat_in_seq]]:
+                    if len(module.gui_list[module.pos_in_seq[module.beat_in_seq]]) < 4:
+                        module.gui_list[module.pos_in_seq[module.beat_in_seq]].append(e)
                 else:
-                    module.gui_list[module.pos_in_seq[seq_temp-1]].remove(e)
+                    module.gui_list[module.pos_in_seq[module.beat_in_seq]].remove(e)
         seq_temp_check = 0
 
 
