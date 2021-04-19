@@ -20,13 +20,13 @@ def check_pressed_key():
     """
     value, btn_type = module.pressed_key
     if btn_type == 'seq':
-        gui_seq().seq_value(value)
+        gui_seq.seq_value(value)
         if module.selected:
             sequencer.toggle_sound(value-1, module.sounds[module.selected-1])  # add or remove sound
 
     if btn_type == 'pad':
         module.selected = value  # selected sound value
-        gui_seq().pad_value(value)
+        gui_seq.pad_value(value)
         for i, beat in enumerate(module.sounds_in_beat):  # checks if sound is already in sequencer
             if module.sounds[value-1] in beat:
                 module.pos_in_seq.append(i)
@@ -117,10 +117,10 @@ class gui_seq():
         13:"Floot Tom 1"
     }
 
-    def pad_value(self, value):
+    def pad_value(value):
         self.pad_btn = value
     
-    def seq_value(self, value):
+    def seq_value(value):
         self.seq_btn = value
 
     def create_list(self):
