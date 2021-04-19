@@ -40,7 +40,7 @@ def check_pressed_key():
     }
 
     value, btn_type = module.pressed_key
-    seq_temp = value
+    seq_temp = module.pressed_key[0]
     seq_temp_check = 0
     if btn_type == 'seq':
         seq_temp_check = 1
