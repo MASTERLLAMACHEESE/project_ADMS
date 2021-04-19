@@ -54,9 +54,9 @@ def pc_init():
     Starts PC specific threads
     """
     from pc_inputs import start_listener
-    from main_gui import start_gui
+    #from main_gui import main
     start_listener()
-    start_gui()
+    #main()
 
 
 def rasp_init():

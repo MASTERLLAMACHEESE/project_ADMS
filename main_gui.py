@@ -83,11 +83,53 @@ class Page2(Page):
         tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=6, row=0, rowspan=21, sticky='ns')
         tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=8, row=0, rowspan=21, sticky='ns')
 
-        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=1, columnspan=8, sticky='ew')
-        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=6, columnspan=8, sticky='ew')
-        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=11, columnspan=8, sticky='ew')
-        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=16, columnspan=8, sticky='ew')
-        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=21, columnspan=8, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=1, columnspan=18, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=6, columnspan=18, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=11, columnspan=18, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=16, columnspan=18, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=21, columnspan=18, sticky='ew')
+
+        tk.Label(self, text="Bar 2", font=self.fontstyle).grid(row=0, column=9)
+        tk.Label(self, text="Hit 1", font=self.fontstyle).grid(row=0, column=10)
+        tk.Label(self, text="Hit 2", font=self.fontstyle).grid(row=0, column=13)
+        tk.Label(self, text="Hit 3", font=self.fontstyle).grid(row=0, column=15)
+        tk.Label(self, text="Hit 4", font=self.fontstyle).grid(row=0, column=17)
+
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=9, row=1, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=12, row=0, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=14, row=0, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=16, row=0, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=18, row=0, rowspan=21, sticky='ns')
+
+        tk.Label(self, text="Bar 2", font=self.fontstyle).grid(row=22, column=0)
+        tk.Label(self, text="Hit 1", font=self.fontstyle).grid(row=22, column=1)
+        tk.Label(self, text="Hit 2", font=self.fontstyle).grid(row=22, column=3)
+        tk.Label(self, text="Hit 3", font=self.fontstyle).grid(row=22, column=5)
+        tk.Label(self, text="Hit 4", font=self.fontstyle).grid(row=22, column=7)
+
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=0, row=23, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=2, row=22, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=4, row=22, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=6, row=22, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=8, row=22, rowspan=21, sticky='ns')
+
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=23, columnspan=18, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=28, columnspan=18, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=33, columnspan=18, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=38, columnspan=18, sticky='ew')
+        tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=43, columnspan=18, sticky='ew')
+
+        tk.Label(self, text="Bar 2", font=self.fontstyle).grid(row=22, column=9)
+        tk.Label(self, text="Hit 1", font=self.fontstyle).grid(row=22, column=10)
+        tk.Label(self, text="Hit 2", font=self.fontstyle).grid(row=22, column=13)
+        tk.Label(self, text="Hit 3", font=self.fontstyle).grid(row=22, column=15)
+        tk.Label(self, text="Hit 4", font=self.fontstyle).grid(row=22, column=17)
+
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=9, row=23, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=12, row=22, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=14, row=22, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=16, row=22, rowspan=21, sticky='ns')
+        tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=18, row=22, rowspan=21, sticky='ns')
 
     def gui_places(self):
         #get text created in adms.py from module.py and set it to the correct text field in grid
@@ -152,13 +194,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-def start_gui():
-    """
-    Start gui thread
-    ToDo These threads probably don't need to exist as threads, but there's no time to change that
-    We could just make callback functions for them
-    def change_seq_led(pos)
-    def togglePitchLed() etc
-    """
-    threading.Thread(target=main).start()
