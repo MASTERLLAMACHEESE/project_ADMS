@@ -103,7 +103,17 @@ class gui_seq():
     pad_mapping = {
         # Pad keys
         4:"Kick 1",
-        3:"Kick 2",module.selected)
+        3:"Kick 2",
+        2:"Kick 3",
+        1:"Kick 4",
+        8:"Snare 1",
+        7:"Snare 2",
+        6:"Snare 3",
+        5:"Clap 1",
+        12:"Closed Hat 1",
+        11:"Closed Hat 2",
+        10:"Closed Hat 3",
+        9:"Closed Hat 4",
         16:"Closed hat 5",
         15:"Crash 1",
         14:"Tom 1",
