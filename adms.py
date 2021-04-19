@@ -3,6 +3,7 @@ import time
 import module
 from pad import Pad
 from sequencer import Sequencer
+import main_gui
 
 pad = Pad()
 sequencer = Sequencer()
@@ -65,10 +66,10 @@ def rasp_init():
     """
     from led import start_led
     from rasp_inputs import start_listener
-    from main_gui import start_gui
+    #from main_gui import start_gui
     start_listener()
     start_led()
-    start_gui()
+    #start_gui()
 
 
 
