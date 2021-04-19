@@ -22,6 +22,7 @@ pos_in_seq = []  # When Pad button is pressed, its positions in sequencer will b
 pad_clicked = False
 
 gui_list = [[] for y in range(16)]
+beat_in_seq = None
 
 # led indexes
 seq_led = 16

@@ -95,6 +95,7 @@ class Sequencer:
         if sound not in module.sounds_in_beat[index]:
             if len(module.sounds_in_beat[index]) < 4:
                 module.sounds_in_beat[index].append(sound)
+                module.beat_in_seq = index
                 print(f'{module.current_time()} SEQ: Added to pos: {index+1}')
             else:
                 print(f'{module.current_time()} SEQ: Cannot add to pos: {index + 1}. Position is full')
