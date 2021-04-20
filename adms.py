@@ -72,6 +72,8 @@ def check_pressed_key():
 
     if seq_temp_check == 1:
         for e in pad_mapping:
+            print (module.beat_in_seq)
+            print (e)
                 if e not in module.gui_list[module.pos_in_seq[module.beat_in_seq]]:
                     if len(module.gui_list[module.pos_in_seq[module.beat_in_seq]]) < 4:
                         module.gui_list[module.pos_in_seq[module.beat_in_seq]].append(e)
