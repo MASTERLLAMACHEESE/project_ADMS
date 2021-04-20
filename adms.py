@@ -39,6 +39,8 @@ def check_pressed_key():
         13:"Floot Tom 1"
     }
 
+    pad_map = ["Kick 4", "Kick 3", "Kick 2", "Kick 1", "Clap 1", "Snare 3", "Snare 2", "Snare 1", "Closed Hat 4", "Closed Hat 3", "Closed Hat 2", "Closed Hat 1", "Floor Tom 1", "Tom 1", "Crash 1", "Closed Hat 5"]
+
     value, btn_type = module.pressed_key
     seq_temp_check = 0
     if btn_type == 'seq':
@@ -71,7 +73,7 @@ def check_pressed_key():
     clear_pressed_key()
 
     if seq_temp_check == 1:
-        for e in pad_mapping:
+        for e in pad_map:
             print (module.beat_in_seq)
             print (e)
             if e not in module.gui_list[module.beat_in_seq]:
