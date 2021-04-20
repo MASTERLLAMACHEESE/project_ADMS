@@ -134,29 +134,29 @@ class Page2(Page):
     def gui_places(self):
         #get text created in adms.py from module.py and set it to the correct text field in grid
         for e in module.gui_list:
-            if e not in self.active_list[module.pos_in_seq]:
+            if e not in self.active_list[module.beat_in_seq]:
                 for x in range (16):
-                    if module.pos_in_seq == x:
-                        amount = len(self.active_list[module.pos_in_seq])
+                    if module.beat_in_seq == x:
+                        amount = len(self.active_list[module.beat_in_seq])
                         if amount < 4:
                             if amount >= 1 and (amount + 1) < 4:
                                 amount =+ 1
                             for key, value in self.position:
-                                if module.pos_in_seq in value:
+                                if module.beat_in_seq in value:
                                     column_space = key
-                            tk.Label(self, text=module.gui_list[module.pos_in_seq], font=self.fontstyle).grid(column=column_space, row=amount)
+                            tk.Label(self, text=module.gui_list[module.beat_in_seq]], font=self.fontstyle).grid(column=column_space, row=amount)
 
         #get text removed in adms.py from module.py and remove it from the correct text field in grid
         for y in self.active_list:
-            if e not in module.gui_list[module.pos_in_seq]:
+            if y not in module.gui_list[module.beat_in_seq]:
                  for x in range (16):
-                    if module.pos_in_seq == x:
-                        amount = len(self.active_list[module.pos_in_seq])
+                    if module.beat_in_seq == x:
+                        amount = len(self.active_list[module.beat_in_seq])
                         if amount < 4:
                             if amount >= 1 and (amount + 1) < 4:
                                 amount =+ 1
                             for key, value in self.position:
-                                if module.pos_in_seq in value:
+                                if module.beat_in_seq] in value:
                                     column_space = key
                             tk.Label(self, text="      ", font=self.fontstyle).grid(column=column_space, row=amount)
 

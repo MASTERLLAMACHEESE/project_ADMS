@@ -71,16 +71,14 @@ def check_pressed_key():
     clear_pressed_key()
 
     if seq_temp_check == 1:
-        if module.pos_in_seq:
-            for e in pad_mapping:
-                print (module.beat_in_seq)
-                print (e)
-                print (module.pos_in_seq[module.beat_in_seq])
-                if e not in module.gui_list[module.pos_in_seq[module.beat_in_seq]]:
-                    if len(module.gui_list[module.pos_in_seq[module.beat_in_seq]]) < 4:
-                        module.gui_list[module.pos_in_seq[module.beat_in_seq]].append(e)
-                else:
-                    module.gui_list[module.pos_in_seq[module.beat_in_seq]].remove(e)
+        for e in pad_mapping:
+            print (module.beat_in_seq)
+            print (e)
+            if e not in module.gui_list[module.beat_in_seq]:
+                if len(module.gui_list[module.beat_in_seq]) < 4:
+                    module.gui_list[module.beat_in_seq].append(e)
+            else:
+                module.gui_list[module.beat_in_seq].remove(e)
         seq_temp_check = 0
 
 
