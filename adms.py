@@ -7,7 +7,6 @@ from sequencer import Sequencer
 
 pad = Pad()
 sequencer = Sequencer()
-pad_temp_value = 0
 
 def clear_pressed_key():
     module.pressed_key = (None, None)
@@ -50,7 +49,7 @@ def check_pressed_key():
 
     if btn_type == 'pad':
         module.selected = value  # selected sound value
-        pad_temp_value = value-1
+        module.pad_temp_value = value-1
         for i, beat in enumerate(module.sounds_in_beat):  # checks if sound is already in sequencer
             if module.sounds[value-1] in beat:
                 module.pos_in_seq.append(i)
@@ -75,12 +74,12 @@ def check_pressed_key():
 
     if seq_temp_check == 1:
         print (module.beat_in_seq)
-        print (pad_map[pad_temp_value])
-        if pad_map[pad_temp_value] not in module.gui_list[module.beat_in_seq]:
+        print (pad_map[module.pad_temp_value])
+        if pad_map[module.pad_temp_value] not in module.gui_list[module.beat_in_seq]:
             if len(module.gui_list[module.beat_in_seq]) < 4:
-                module.gui_list[module.beat_in_seq].append(pad_map[pad_temp_value])
+                module.gui_list[module.beat_in_seq].append(pad_map[module.pad_temp_value])
         else:
-            module.gui_list[module.beat_in_seq].remove(pad_map[pad_temp_value])
+            module.gui_list[module.beat_in_seq].remove(pad_map[module.pad_temp_value])
         seq_temp_check = 0
 
 
