@@ -144,7 +144,7 @@ class Page2(Page):
                             for key, value in self.position:
                                 if module.beat_in_seq in value:
                                     column_space = key
-                            tk.Label(self, text=module.gui_list[module.beat_in_seq]], font=self.fontstyle).grid(column=column_space, row=amount)
+                            tk.Label(self, text=module.gui_list[module.beat_in_seq], font=self.fontstyle).grid(column=column_space, row=amount)
 
         #get text removed in adms.py from module.py and remove it from the correct text field in grid
         for y in self.active_list:
@@ -156,7 +156,7 @@ class Page2(Page):
                             if amount >= 1 and (amount + 1) < 4:
                                 amount =+ 1
                             for key, value in self.position:
-                                if module.beat_in_seq] in value:
+                                if module.beat_in_seq in value:
                                     column_space = key
                             tk.Label(self, text="      ", font=self.fontstyle).grid(column=column_space, row=amount)
 
