@@ -138,8 +138,8 @@ class Page2(Page):
                 for x in range (16):
                     if module.beat_in_seq == x:
                         amount = len(self.active_list[module.beat_in_seq])
-                        if amount < 4:
-                            if amount >= 1 and (amount + 1) < 4:
+                        if amount < 5:
+                            if amount >= 1 and (amount + 1) < 5:
                                 amount =+ 1
                             for key, value in self.position:
                                 if module.beat_in_seq in value:
@@ -152,8 +152,8 @@ class Page2(Page):
                  for x in range (16):
                     if module.beat_in_seq == x:
                         amount = len(self.active_list[module.beat_in_seq])
-                        if amount < 4:
-                            if amount >= 1 and (amount + 1) < 4:
+                        if amount < 5:
+                            if amount >= 1 and (amount + 1) < 5:
                                 amount =+ 1
                             for key, value in self.position:
                                 if module.beat_in_seq in value:
