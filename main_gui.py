@@ -86,15 +86,6 @@ class Page2(Page):
         tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=1, columnspan=18, sticky='ew')
         tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=6, columnspan=18, sticky='ew')
 
-        tk.Label(self, text="Kick 4", font=self.fontstyle).grid(row=2, column=1)
-        tk.Label(self, text="Kick 4", font=self.fontstyle).grid(row=2, column=5)
-        tk.Label(self, text="Snare 3", font=self.fontstyle).grid(row=2, column=3)
-        tk.Label(self, text="Snare 3", font=self.fontstyle).grid(row=2, column=7)
-        tk.Label(self, text="Closed Hat 1", font=self.fontstyle).grid(row=3, column=3)
-        tk.Label(self, text="Closed Hat 1", font=self.fontstyle).grid(row=3, column=5)
-        tk.Label(self, text="Closed Hat 1", font=self.fontstyle).grid(row=3, column=7)
-        tk.Label(self, text="Crash 1", font=self.fontstyle).grid(row=3, column=1)
-
         tk.Label(self, text="Bar 2", font=self.fontstyle).grid(row=0, column=9)
         tk.Label(self, text="Hit 1", font=self.fontstyle).grid(row=0, column=10)
         tk.Label(self, text="Hit 2", font=self.fontstyle).grid(row=0, column=13)
@@ -106,14 +97,6 @@ class Page2(Page):
         tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=14, row=0, rowspan=21, sticky='ns')
         tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=16, row=0, rowspan=21, sticky='ns')
         tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=18, row=0, rowspan=21, sticky='ns')
-
-        tk.Label(self, text="Kick 4", font=self.fontstyle).grid(row=2, column=11)
-        tk.Label(self, text="Kick 4", font=self.fontstyle).grid(row=2, column=15)
-        tk.Label(self, text="Snare 3", font=self.fontstyle).grid(row=2, column=13)
-        tk.Label(self, text="Snare 3", font=self.fontstyle).grid(row=2, column=17)
-        tk.Label(self, text="Closed Hat 1", font=self.fontstyle).grid(row=3, column=13)
-        tk.Label(self, text="Closed Hat 1", font=self.fontstyle).grid(row=3, column=15)
-        tk.Label(self, text="Closed Hat 1", font=self.fontstyle).grid(row=3, column=17)
 
         tk.Label(self, text="Bar 3", font=self.fontstyle).grid(row=22, column=0)
         tk.Label(self, text="Hit 1", font=self.fontstyle).grid(row=22, column=1)
@@ -130,15 +113,6 @@ class Page2(Page):
         tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=23, columnspan=18, sticky='ew')
         tkinter.ttk.Separator(self, orient=HORIZONTAL).grid(column=0, row=28, columnspan=18, sticky='ew')
 
-        tk.Label(self, text="Kick 4", font=self.fontstyle).grid(row=24, column=1)
-        tk.Label(self, text="Kick 4", font=self.fontstyle).grid(row=24, column=5)
-        tk.Label(self, text="Snare 3", font=self.fontstyle).grid(row=24, column=3)
-        tk.Label(self, text="Snare 3", font=self.fontstyle).grid(row=24, column=7)
-        tk.Label(self, text="Closed Hat 1", font=self.fontstyle).grid(row=25, column=3)
-        tk.Label(self, text="Closed Hat 1", font=self.fontstyle).grid(row=25, column=5)
-        tk.Label(self, text="Closed Hat 1", font=self.fontstyle).grid(row=25, column=7)
-        tk.Label(self, text="Crash 1", font=self.fontstyle).grid(row=24, column=1)
-
         tk.Label(self, text="Bar 4", font=self.fontstyle).grid(row=22, column=9)
         tk.Label(self, text="Hit 1", font=self.fontstyle).grid(row=22, column=10)
         tk.Label(self, text="Hit 2", font=self.fontstyle).grid(row=22, column=13)
@@ -150,14 +124,6 @@ class Page2(Page):
         tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=14, row=22, rowspan=21, sticky='ns')
         tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=16, row=22, rowspan=21, sticky='ns')
         tkinter.ttk.Separator(self, orient=VERTICAL).grid(column=18, row=22, rowspan=21, sticky='ns')
-
-        tk.Label(self, text="Kick 4", font=self.fontstyle).grid(row=24, column=11)
-        tk.Label(self, text="Kick 4", font=self.fontstyle).grid(row=24, column=15)
-        tk.Label(self, text="Snare 3", font=self.fontstyle).grid(row=24, column=13)
-        tk.Label(self, text="Snare 3", font=self.fontstyle).grid(row=24, column=17)
-        tk.Label(self, text="Closed Hat 1", font=self.fontstyle).grid(row=25, column=13)
-        tk.Label(self, text="Closed Hat 1", font=self.fontstyle).grid(row=25, column=15)
-        tk.Label(self, text="Closed Hat 1", font=self.fontstyle).grid(row=25, column=17)
 
     def gui_places(self):
         #get text created in adms.py from module.py and set it to the correct text field in grid
